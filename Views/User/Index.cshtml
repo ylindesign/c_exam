@@ -1,0 +1,67 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <legend><b>Register</b></legend>
+            <br>
+            <form action="/register" method="post">
+                <label for="first_name">First Name:</label>
+                <input type="text" id="first_name" name="first_name">
+                <label for="last_name">Last Name:</label>
+                <input type="text" id="last_name" name="last_name">
+                <label for="email">Email:</label>
+                <input type="textarea" id="email" name="email">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <label for="pw_conf">Confirm Password:</label>
+                <input type="password" name="pw_conf" id="pw_conf">
+                <br>
+                <br>
+                <input class="btn btn-info" type="submit" value="Register">
+            </form>
+        </div>
+        <!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        1 of 3
+        </div>-->
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <legend><b>Sign In</b></legend>
+            <br>
+            <form action="/signin" method="post">
+                <label for="email">Email:</label>
+                <input type="textarea" id="email" name="email">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <br>
+                <br>
+                <input class="btn btn-info" type="submit" value="Login">
+            </form>
+            <h3>@ViewBag.Message</h3>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 messages">
+            @if (ViewBag.Status == true) {
+                @foreach(var error in ViewBag.Errors) {
+                    if (@error.Errors.Count > 0 ) {
+                        <h3>@error.Errors[0].ErrorMessage</h3>
+                    }
+                }
+            }
+        </div>
+        <!--<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        </div>-->
+    </div>
+</div>
+

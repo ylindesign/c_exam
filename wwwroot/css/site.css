@@ -1,0 +1,12 @@
+/*Write all of your CSS here*/
+label {
+    width: 135px;
+    text-align: left;
+    /*display: block;*/
+}
+
+input {
+    width: 135px;
+    text-align: left;
+    background-color: none;
+}

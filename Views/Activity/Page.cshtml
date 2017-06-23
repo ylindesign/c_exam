@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Add Page";
+}
+<h1>@ViewBag.Activity.title</h1>
+    <br>
+    <h2>Event Coordinator: @ViewBag.Activity.User.first_name @ViewBag.Activity.User.last_name</h2>
+    <br>
+    <h2>Description</h2>
+    <p>@ViewBag.Activity.desc</p>
+    <br>
+    <h2>Guests:</h2>
+        @foreach (var guest in @ViewBag.part) {
+            <h4>@guest.User.first_name @guest.User.last_name</h4>
+        }
+
+    @if (@ViewBag.UserId == @ViewBag.Activity.userId) {
+        <form action="/delete/@ViewBag.Activity.id">
+            <input class="btn-link" type="submit" value="Delete">
+        </form>
+    } else {
+        bool coming = false;
+        @foreach(var guest in @ViewBag.part) {
+            if(@guest.userId == @ViewBag.UserId) {
+                coming = true;
+            }
+        }
+        
+        @if(coming == true){
+            <form action="/leave/@ViewBag.Activity.id">
+                <input class="btn-link" type="submit" value="Leave">
+            </form>
+        } else {
+            <form action="/join/@ViewBag.Activity.id">
+                <input class="btn-link" type="submit" value="Join">
+            </form>
+        }
+    }

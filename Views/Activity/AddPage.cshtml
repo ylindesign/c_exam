@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Add Page";
+}
+<h1>Create an Activity!</h1>
+<br>
+<form action="add" method="post">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title">
+    <br>
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time">
+    <br>
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date">
+    <br>
+    <label for="duration">Duration:</label>
+    <input type="number" min="1" id="duration" name="duration">
+    <select id="type" name="type">
+        <option selected disabled>Select Time Type</option>        
+        <option value="Days">Day(s)</option>
+        <option value="Hours">Hour(s)</option>
+        <option value="Minutes">Minute(s)</option>
+    </select>
+    <br>
+    <label for="desc">Description:</label>
+    <input type="textarea" id="desc" name="desc">
+    <br>
+    <br>
+    <input class="submit btn-link" type="submit" value="Create">
+</form>
+<div class="messages">
+    <h1>@ViewBag.Message</h1>
+
+    @if (ViewBag.Status == true) {
+        @foreach(var error in ViewBag.Errors) {
+            if (@error.Errors.Count > 0 ) {
+                <h3>@error.Errors[0].ErrorMessage</h3>
+            }
+        }
+    }
+<div>
